@@ -1,0 +1,152 @@
+{
+    "users":[
+        {
+            "username": "johndoe",
+            "passwordHash": "hashedPassword123",
+            "email": "johndoe@example.com",
+            "age": 25,
+            "phoneNumber": "123-456-7890",
+            "plantLevel": 2,
+            "friendsList": [
+                "janedoe",
+                "alicewonder"
+            ],
+            "tasks": [
+                {
+                    "title": "Buy groceries",
+                    "time": "10:00",
+                    "date": "2024-11-15",
+                    "content": "Get milk, bread, and eggs."
+                },
+                {
+                    "title": "Gym workout",
+                    "time": "18:00",
+                    "date": "2024-11-16",
+                    "content": "Chest and back exercises."
+                }
+            ]
+        },
+        {
+            "username": "janedoe",
+            "passwordHash": "hashedPassword456",
+            "email": "janedoe@example.com",
+            "age": 28,
+            "phoneNumber": "123-555-7890",
+            "plantLevel": 3,
+            "friendsList": [
+                "johndoe",
+                "bobsmith"
+            ],
+            "tasks": [
+                {
+                    "title": "Morning run",
+                    "time": "06:30",
+                    "date": "2024-11-15",
+                    "content": "Run 5 kilometers."
+                }
+            ]
+        },
+        {
+            "username": "alicewonder",
+            "passwordHash": "hashedPassword789",
+            "email": "alice@example.com",
+            "age": 22,
+            "phoneNumber": "123-456-1234",
+            "plantLevel": 1,
+            "friendsList": [
+                "johndoe"
+            ],
+            "tasks": [
+                {
+                    "title": "Study for exams",
+                    "time": "14:00",
+                    "date": "2024-11-18",
+                    "content": "Focus on math and science."
+                }
+            ]
+        },
+        {
+            "username": "bobsmith",
+            "passwordHash": "hashedPassword101",
+            "email": "bobsmith@example.com",
+            "age": 30,
+            "phoneNumber": "555-555-5555",
+            "plantLevel": 4,
+            "friendsList": [
+                "janedoe"
+            ],
+            "tasks": []
+        },
+        {
+            "username": "charliebrown",
+            "passwordHash": "hashedPassword111",
+            "email": "charlie@example.com",
+            "age": 27,
+            "phoneNumber": "111-222-3333",
+            "plantLevel": 2,
+            "friendsList": [
+                "danielle"
+            ],
+            "tasks": [
+                {
+                    "title": "Finish project",
+                    "time": "09:00",
+                    "date": "2024-11-20",
+                    "content": "Complete the CalPal app coding."
+                }
+            ]
+        },
+        {
+            "username": "danielle",
+            "passwordHash": "hashedPassword222",
+            "email": "danielle@example.com",
+            "age": 24,
+            "phoneNumber": "222-333-4444",
+            "plantLevel": 1,
+            "friendsList": [
+                "charliebrown"
+            ],
+            "tasks": [
+                {
+                    "title": "Yoga session",
+                    "time": "07:00",
+                    "date": "2024-11-22",
+                    "content": "Attend online yoga class."
+                }
+            ]
+        },
+        {
+            "username": "ericjohnson",
+            "passwordHash": "hashedPassword333",
+            "email": "ericj@example.com",
+            "age": 29,
+            "phoneNumber": "333-444-5555",
+            "plantLevel": 3,
+            "friendsList": [
+                "johndoe",
+                "danielle"
+            ],
+            "tasks": []
+        },
+        {
+            "username": "franklin",
+            "passwordHash": "hashedPassword444",
+            "email": "franklin@example.com",
+            "age": 26,
+            "phoneNumber": "444-555-6666",
+            "plantLevel": 2,
+            "friendsList": [
+                "alicewonder"
+            ],
+            "tasks": [
+                {
+                    "title": "Grocery shopping",
+                    "time": "15:00",
+                    "date": "2024-11-25",
+                    "content": "Buy vegetables and fruits."
+                }
+            ]
+        }
+    ]
+}
+

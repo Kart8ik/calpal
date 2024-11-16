@@ -1,0 +1,7 @@
+.highlighted {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    border-radius: 50%; /* Makes the highlighted dates circular */
+  }
+  

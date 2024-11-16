@@ -1,0 +1,34 @@
+[
+    {
+        "groupName": "Study Buddies",
+        "members": [
+            "johndoe",
+            "janedoe",
+            "alicewonder"
+        ],
+        "groupTasks": [
+            {
+                "title": "Math Revision",
+                "time": "17:00",
+                "date": "2024-11-18",
+                "content": "Review chapter 5 and 6 for the test."
+            }
+        ]
+    },
+    {
+        "groupName": "Project Team",
+        "members": [
+            "bobsmith",
+            "charliebrown",
+            "danielle"
+        ],
+        "groupTasks": [
+            {
+                "title": "Finalize Presentation",
+                "time": "14:00",
+                "date": "2024-11-21",
+                "content": "Prepare slides for the final project presentation."
+            }
+        ]
+    }
+]
