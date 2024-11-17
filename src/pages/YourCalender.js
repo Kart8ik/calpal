@@ -1,47 +1,78 @@
-import React,{useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
-import './stylesheets/YourCalender.css';
+import '../stylesheets/YourCalender.css';
 import 'react-calendar/dist/Calendar.css';
 import NavbarTwo from './NavbarTwo';
+import AllContext from '../context/AllContext';
 
 const YourCalender = () => {
-  const highlightedDates = [
-    new Date(2024, 10, 13), // November 13, 2024
-    new Date(2024, 10, 20), // November 20, 2024
-    new Date(2024, 10, 25),  // November 25, 2024
-    new Date(2024, 11, 13), // December 13, 2024
-    new Date(2024, 11, 18), // December 18, 2024
-    new Date(2024, 11, 25), // December 25, 2024
+  const { userDetails } = useContext(AllContext);
+  const [selectedTasks, setSelectedTasks] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  ];
+  useEffect(() => {
+    if (!userDetails || !userDetails.tasks) return;
+    const formattedDate = new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+    const newSelectedTasks = userDetails.tasks.filter((task) => task.date === formattedDate);
+    setSelectedTasks(newSelectedTasks);
+    console.log(newSelectedTasks)
+  }, [selectedDate, userDetails]);
 
-  // Function to check if a date is in the highlighted dates
-  const isHighlighted = (date) => {
-    return highlightedDates.some(
-      (highlightedDate) =>
-        date.getFullYear() === highlightedDate.getFullYear() &&
-        date.getMonth() === highlightedDate.getMonth() &&
-        date.getDate() === highlightedDate.getDate()
-    );
+  const handleDateClick = (date) => {
+    setSelectedDate(date);
+    const formattedDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+    const newSelectedTasks = userDetails?.tasks?.filter((task) => task.date === formattedDate) || [];
+    setSelectedTasks(newSelectedTasks);
+    console.log("Clicked Date:", formattedDate);
   };
+
+  const isHighlighted = (date) => {
+    return userDetails?.tasks?.some((task) => {
+      const taskDate = new Date(task.date);
+      return (
+        date.getFullYear() === taskDate.getFullYear() &&
+        date.getMonth() === taskDate.getMonth() &&
+        date.getDate() === taskDate.getDate()
+      );
+    });
+  };
+
   return (
     <div className="YourCalender">
-    <NavbarTwo />
-    <main>
-      <div className="calendar-container">
-      <Calendar
-        tileClassName={({ date, view }) =>
-          // Add class to day tiles only (not month/year tiles)
-          view === 'month' && isHighlighted(date) ? 'highlighted' : null
-        }
-      />
-      </div>
-      <div className="sidebar">
-        <button className="home-button">Home</button>
-      </div>
-    </main>
-  </div>
-  )
-}
+      <NavbarTwo />
+      <main>
+        <div className="calendar-container">
+          <Calendar
+            tileClassName={({ date, view }) =>
+              view === 'month' && isHighlighted(date) ? 'highlighted' : null
+            }
+            onClickDay={handleDateClick}
+            value={selectedDate}
+          />
+        </div>
+        <div className="tasks-list">
+          <h2>Tasks for {selectedDate.toDateString()}</h2>
+          {/* <ul>
+            {selectedTasks.map((task, index) => (
+              <li key={index}>{task.title}</li>
+            ))}
+          </ul> */}
+          <ul id="selected-Task-list">
+        {selectedTasks.map((task, index) => (
+          <li key={index}>
+            <div className="task-title">{task.title}</div>
+            <div className="task-time">{task.time}</div>
+            <div className="task-content">{task.content}</div>
+          </li>
+        ))}
+      </ul>
+        </div>
+        <div className="sidebar">
+          <button className="home-button">Home</button>
+        </div>
+      </main>
+    </div>
+  );
+};
 
-export default YourCalender
+export default YourCalender;
