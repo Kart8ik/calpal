@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #d6a6c2; /* Match Genius-like theme */
+    color: white;
+    border-bottom: 2px solid #c1c1c1;
+  }
+  
+  .navbar-left {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .navbar-right span {
+    margin-left: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .navbar-right span:hover {
+    color: #ffffff;
+  }
+.link-style {
+    color: white;
+    text-decoration: none;
+}
+
+.link-style:hover {
+    color: #ffffff; /* Ensure the hover color is also white */
+    text-decoration: underline; /* Optional: Add underline on hover for better visibility */
+}

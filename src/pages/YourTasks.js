@@ -2,6 +2,7 @@ import React, { useState, useEffect,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheets/YourTasks.css';
 import apiRequest from './apiRequest';
+import NavbarTwo from './NavbarTwo';
 import AllContext from '../context/AllContext';
 
 const YourTasks = () => {
@@ -102,6 +103,7 @@ const YourTasks = () => {
 
   return (
     <div>
+      <NavbarTwo />
       <div id="TasksHeading">Your Tasks</div>
       <ul id="todayTasks">
         {todayTasks.map((task, index) => (
