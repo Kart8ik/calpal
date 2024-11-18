@@ -1,0 +1,198 @@
+/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Londrina+Shadow&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    background-image: url('./flowers-bg.jpg'); /* Dark background */
+    color: #f7f7f7; /* Light text color */
+}
+
+.your-tasks-container {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #f7f7f7; /* Light text color */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #212121; /* Dark background */
+    padding: 1rem;
+    color: #d6a6c2; /* Light text color */
+    border-bottom: 2px solid #c1c1c1;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    color: #d6a6c2; /* Light text color */
+    margin: 0;
+}
+
+.your-tasks-section {
+    display: flex;
+    justify-content: space-between;
+    height: calc(100vh - 60px);
+}
+
+.your-tasks-list {
+    width: 60%;
+    background-color: #252525; /* Dark background */
+    border-right: 2px solid #c1c1c1;
+    padding-right: 1rem;
+}
+
+.your-tasks-list-heading {
+    margin: 0;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    color: #f7f7f7; /* Light text color */
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.your-task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 2px solid #c1c1c1;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.your-task-item:hover {
+    background-color: #3a3a3a; /* Darker background on hover */
+}
+
+.your-task-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-right: 1rem;
+    text-align: left;
+}
+
+.your-task-firstline {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.your-task-title {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #f7f7f7; /* Light text color */
+}
+
+.your-task-content {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.your-task-time {
+    font-size: 1.2rem;
+    color: #f7f7f7; /* Light text color */
+}
+
+.add-task-button,
+.your-task-complete-button {
+    padding: 0.6rem 1rem;
+    background-color: #212121; /* Dark background */
+    border: 2px solid #d6a6c2;
+    border-radius: 20px;
+    color: #d6a6c2;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-weight: bold;
+}
+
+.add-task-button:hover,
+.your-task-complete-button:hover {
+    background-color: #d6a6c2;
+    color: white;
+    border: 2px solid #d6a6c2;
+}
+
+.add-task-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    align-self: center;
+}
+
+.add-task-form input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid #d6a6c2;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #252525; /* Dark background */
+    color: #f7f7f7; /* Light text color */
+    outline: none;
+}
+
+.add-task-form button {
+    padding: 0.6rem 1rem;
+    background-color: #212121; /* Dark background */
+    border: 2px solid #d6a6c2;
+    border-radius: 25px;
+    color: #d6a6c2;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-weight: bold;
+    width: 5rem;
+    align-self: center;
+}
+
+.add-task-form button:hover {
+    background-color: #d6a6c2;
+    color: white;
+    border: 2px solid #d6a6c2;
+}
+
+.date-section {
+    text-align: center;
+    width: 40%;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.date-section-heading {
+    margin: 1rem 0 1rem 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #f7f7f7; /* Light text color */
+}
+
+.flower-illustration {
+    max-width: 80%;
+    height: auto;
+}
+
+.calendar-link {
+    padding: 0.6rem 1rem;
+    background-color: #212121; /* Dark background */
+    border: 2px solid #d6a6c2;
+    border-radius: 20px;
+    color: #d6a6c2;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-weight: bold;
+    width: 5rem;
+    text-decoration: none;
+}
+
+.calendar-link:hover {
+    background-color: #d6a6c2;
+    color: white;
+    border: 2px solid #d6a6c2;
+}

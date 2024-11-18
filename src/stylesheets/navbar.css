@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Londrina+Shadow&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -6,6 +9,7 @@
     background-color: #d6a6c2; /* Match Genius-like theme */
     color: white;
     border-bottom: 2px solid #c1c1c1;
+    font-family: 'Rubik', sans-serif;
   }
   
   .navbar-left {

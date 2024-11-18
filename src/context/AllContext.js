@@ -7,7 +7,6 @@ export const AllProvider = ({ children }) => {
     const [userDetails, setUserDetails] = useState({});
     const [users, setUsers] = useState([]);
     const [groups, setGroups] = useState([]);
-    const [tasks,setTasks] = useState([]);
 
     const getUsersData = async()=>{
         const options = {
@@ -48,7 +47,7 @@ export const AllProvider = ({ children }) => {
     }
 
     return (
-        <AllContext.Provider value={{userDetails,setUserDetails,users,setUsers,groups,setGroups,tasks,setTasks,getUsersData,getUserData}}>
+        <AllContext.Provider value={{userDetails,setUserDetails,users,setUsers,groups,setGroups,getUsersData,getUserData}}>
             {children}
         </AllContext.Provider>
     )

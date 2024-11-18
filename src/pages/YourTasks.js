@@ -1,13 +1,13 @@
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './stylesheets/YourTasks.css';
+import '../stylesheets/YourTasks.css';
 import apiRequest from './apiRequest';
 import NavbarTwo from './NavbarTwo';
 import AllContext from '../context/AllContext';
 
 const YourTasks = () => {
   const url = "http://localhost:8080/api/users";
-  const { userDetails,getUserData }=useContext(AllContext)
+  const { userDetails, getUserData } = useContext(AllContext)
   const [todayTasks, setTodayTasks] = useState([]);
   const [AddTask, setAddTask] = useState(false);
   const [newTask, setNewTask] = useState({ title: "", time: "", date: "", content: "", completed: false });
@@ -21,7 +21,7 @@ const YourTasks = () => {
       tasksLength: userDetails?.tasks?.length,
       todayDate,
     });
-  
+
     const getTodaysTasks = () => {
       if (userDetails?.username) {
         console.log("Fetching user data...");
@@ -33,18 +33,18 @@ const YourTasks = () => {
         }
       }
     };
-  
+
     getTodaysTasks();
   }, [userDetails.username, todayDate, userDetails.tasks?.length, getUserData]);
-  
-  
+
+
 
   const addNewTaskinDB = async (event) => {
     event.preventDefault();
 
-    if(newTask.date===todayDate){
-      setTodayTasks(prev => [...prev,newTask])
-    } 
+    if (newTask.date === todayDate) {
+      setTodayTasks(prev => [...prev, newTask])
+    }
     console.log(newTask);
     const options = {
       method: 'PUT',
@@ -102,33 +102,42 @@ const YourTasks = () => {
   };
 
   return (
-    <div>
+    <div className="your-tasks-container">
       <NavbarTwo />
-      <div id="TasksHeading">Your Tasks</div>
-      <ul id="todayTasks">
-        {todayTasks.map((task, index) => (
-          <li key={index}>
-            <div className="task-title">{task.title}</div>
-            <div className="task-time">{task.time}</div>
-            <div className="task-content">{task.content}</div>
-            <button onClick={() => deleteTaskinDB(task.title)}>delete Task</button>
-          </li>
-        ))}
-      </ul>
-      <button onClick={() => setAddTask(prev => !(prev))}>Add Task</button>
-      {AddTask && (
-        <form onSubmit={addNewTaskinDB}>
-          <input type="text" name="title" placeholder="Title" value={newTask.title} onChange={(e) => updateNewTask(e)} required/>
-          <input type="time" name="time" placeholder="Time" value={newTask.time} onChange={(e) => updateNewTask(e)} required/>
-          <input type="date" name="date" placeholder="Date" value={newTask.date} onChange={(e) => updateNewTask(e)} required/>
-          <input type="text" name="content" placeholder="Content" value={newTask.content} onChange={(e) => updateNewTask(e)} required/>
-          <button type='submit'>Add</button>
-        </form>
-      )}
+      <div className="your-tasks-section">
+        <div className="your-tasks-list">
+          <div className='your-tasks-list-heading'>Your Tasks</div>
+          <ul>
+            {todayTasks.map((task, index) => (
+              <li key={index} className="your-task-item">
+                <div className="your-task-info">
+                  <span className="your-task-firstline">
+                  <span className="your-task-title">{task.title}</span>
+                  <span className="your-task-time">{task.time}</span>
+                  </span>
+                  <span className="your-task-content">{task.content}</span>
+                </div>
+                <button onClick={() => deleteTaskinDB(task.title)} className="your-task-complete-button">Complete</button>
+              </li>
+            ))}
+          </ul>
 
-      <div id="DateHeading">{new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' })}</div>
-      <div>
-        <Link to="/yourcalendar" className="link-style">View Calendar</Link>
+          <button onClick={() => setAddTask(prev => !prev)} className="add-task-button">Add Task</button>
+          {AddTask && (
+            <form onSubmit={addNewTaskinDB} className="add-task-form">
+              <input type="text" name="title" placeholder="Title" value={newTask.title} onChange={updateNewTask} required />
+              <input type="time" name="time" placeholder="Time" value={newTask.time} onChange={updateNewTask} required />
+              <input type="date" name="date" placeholder="Date" value={newTask.date} onChange={updateNewTask} required />
+              <input type="text" name="content" placeholder="Content" value={newTask.content} onChange={updateNewTask} required />
+              <button type="submit">Add</button>
+            </form>
+          )}
+        </div>
+        <div className="date-section">
+          <div className='date-section-heading'>{new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' })}</div>
+          <img src='/flower.png' alt="Flower Illustration" className="flower-illustration" />
+          <div><Link to="/yourcalendar" className="calendar-link">View Calendar</Link></div>
+        </div>
       </div>
     </div>
   );

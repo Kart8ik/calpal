@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import NavbarOne from './NavbarOne';
 import AllContext from '../context/AllContext';
+import '../stylesheets/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -53,23 +54,27 @@ const LoginPage = () => {
     return (
         <div>
             <NavbarOne />
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" value={username} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" value={password} onChange={handleChange} required />
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            {errorMessage && (
-                <div className="error-popup">
-                    <p>{errorMessage}</p>
-                    <button onClick={() => setErrorMessage('')}>Close</button>
-                </div>
-            )}
+            <div className="login-container">
+                <form className='login-form' onSubmit={handleSubmit}>
+                    <div>
+                    <div className="label">Username</div>
+                    <div>
+                        <input type="text" id="username" name="username" value={username} onChange={handleChange} required />
+                    </div>
+                    <div className="label">Password</div>
+                    <div>
+                        <input type="password" id="password" name="password" value={password} onChange={handleChange} required />
+                    </div>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                {errorMessage && (
+                    <div className="error-popup">
+                        <p>{errorMessage}</p>
+                        <button onClick={() => setErrorMessage('')}>Close</button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
