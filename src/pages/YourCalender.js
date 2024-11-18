@@ -41,20 +41,21 @@ const YourCalender = () => {
       <NavbarTwo />
       <div className="main-content">
         <div className='left-section'>
+          <div className='calendar-section-heading'>Your Calendar</div>
           <div className="calendar-section">
             <Calendar
               tileClassName={({ date }) => isHighlighted(date) ? 'react-calendar__tile--highlighted' : null}
               onClickDay={handleDateClick} value={selectedDate}
             />
           </div>
+          <div className='calendar-tasks-section-heading'>Your Tasks</div>
           <div className="calendar-tasks-section">
-            <div className='calendar-tasks-section-heading'>Your Tasks</div>
             <ul className="calendar-tasks-list">
               {selectedTasks.map((task, index) => (
                 <li key={index} className="calendar-task-item">
                   <span className='calendar-tasks-firstline'>
-                  <span className="calendar-task-title">{task.title}</span>
-                  <span className="calendar-task-time">{task.time}</span>
+                    <span className="calendar-task-title">{task.title}</span>
+                    <span className="calendar-task-time">{task.time}</span>
                   </span>
                   <span className="calendar-task-content">{task.content}</span>
                 </li>

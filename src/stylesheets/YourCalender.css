@@ -162,6 +162,13 @@ body {
   padding: 2rem;
 }
 
+.calendar-section-heading{
+  font-size: 1.8rem;
+  color: #f7f7f7; /* Light text color */
+  font-weight: bold;
+  text-align: left;
+}
+
 .calendar-tasks-section {
   display: flex;
   flex-direction: column;
@@ -180,9 +187,10 @@ body {
 .calendar-tasks-section-heading {
   font-size: 1.8rem;
   color: #f7f7f7; /* Light text color */
+  margin-top: 1rem;
   margin-bottom: 1rem;
-  align-self: flex-start;
   font-weight: bold;
+  text-align: left; /* Align text to the left */
 }
 
 .calendar-tasks-list {
