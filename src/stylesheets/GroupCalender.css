@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    background-image: url('./flowers-bg.jpg'); /* Dark background */
+    color: #f7f7f7; /* Light text color */
+}
+
+.group-your-calender-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* General styling for the calendar container */
+.react-calendar {
+    background-color: #252525; /* Dark background */
+    border: 2px solid #c1c1c1;
+    color: #f7f7f7; /* Light text color */
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none!important;
+  }
+  
+  /* Header styling for month and navigation */
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+  
+  .react-calendar__navigation button {
+    color: #d6a6c2; /* Light text color */
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .react-calendar__navigation button:hover {
+    color: #f7f7f7!important; /* Light text color */
+  }
+  
+  /* Weekday labels */
+  .react-calendar__month-view__weekdays {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #c1c1c1;
+    border-bottom: 2px solid #3a3a3a;
+    padding-bottom: 0.5rem;
+    text-decoration: none!important;
+  }
+  
+  .react-calendar__month-view__weekdays__weekday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Day tiles */
+  .react-calendar__tile {
+    background-color: #212121; /* Dark background */
+    color: #f7f7f7; /* Light text color */
+    border: 1px solid #3a3a3a;
+    padding: 0.8rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .react-calendar__tile:hover {
+    background-color: #3a3a3a !important; /* Darker background on hover */
+  }
+  
+  .react-calendar__tile--active {
+    background-color: #fafafa !important;
+    color: #212121 !important;
+    font-weight: bold;
+  }
+  
+  .react-calendar__tile--now {
+    background-color: #939191;
+    color: #212121;
+    font-weight: bold;
+    border: 2px solid #d6a6c2;
+  }
+  
+  .react-calendar__tile--highlighted {
+    background-color: #e1afcc; /* Highlighted green for special dates */
+    color: black;
+    font-weight: bold;
+  }
+  
+  /* Disabled days */
+  .react-calendar__tile--disabled {
+    background-color: #1e1e1e!important;
+    color: #777!important;
+    cursor: not-allowed;
+  }
+  
+  /* Calendar navigation arrows */
+  .react-calendar__navigation button:disabled {
+    color: #c2c2c2!important;
+    cursor: not-allowed;
+  }
+
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #212121; /* Dark background */
+    border-bottom: 2px solid #c1c1c1;
+}
+
+.group-header h1 {
+    font-size: 1.5rem;
+    color: #d6a6c2; /* Light text color */
+}
+
+.group-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.group-menu-button {
+    padding: 0.6rem 1rem;
+    background-color: #212121; /* Dark background */
+    border: 2px solid #d6a6c2;
+    border-radius: 20px;
+    color: #d6a6c2; /* Light text color */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.group-menu-button:hover {
+    background-color: #d6a6c2;
+    color: #212121;
+}
+
+.group-main-content {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.group-calendar-section {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #252525; /* Dark background */
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.group-calendar-section-heading {
+    font-size: 1.8rem;
+    color: #f7f7f7; /* Light text color */
+    font-weight: bold;
+    text-align: left;
+}
+
+.group-calendar-tasks-section {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.group-left-section {
+    flex: 3;
+    background-color: #252525; /* Dark background */
+    padding: 2rem;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 4rem); /* Adjust height to fit within the viewport */
+    border-right: 2px solid #c1c1c1;
+}
+
+.group-calendar-tasks-section-heading {
+    font-size: 1.8rem;
+    color: #f7f7f7; /* Light text color */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: left; /* Align text to the left */
+}
+
+.group-calendar-tasks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.group-calendar-task-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    border-bottom: 2px solid #c1c1c1;
+}
+
+.group-calendar-task-title {
+    font-weight: bold;
+    color: #f7f7f7; /* Light text color */
+}
+
+.group-calendar-task-time {
+    font-size: 1.2rem;
+    color: #f7f7f7; /* Light text color */
+    margin-left: 2rem;
+}
+
+.group-calendar-task-content {
+    color: #c1c1c1;
+    margin-top: 0.5rem;
+    width: 35rem;
+    text-align: left;
+}
+
+.group-calendar-tasks-secondline {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: flex-start!important;
+}
+
+.group-calendar-task-complete-button {
+    padding: 0.6rem 1rem;
+    background-color: #212121; /* Dark background */
+    border: 2px solid #d6a6c2;
+    border-radius: 20px;
+    color: #d6a6c2;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-weight: bold;
+    align-self: right;
+    margin-left: 8rem;
+}
+
+.group-calendar-task-complete-button:hover {
+    background-color: #d6a6c2;
+    color: white;
+    border: 2px solid #d6a6c2;
+}
+
+.group-sidebar {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+
+.group-calendar-tasks-section-heading {
+    align-self: center;
+}
+
+.group-flower-illustration {
+    max-width: 80%;
+    margin-bottom: 1rem;
+}

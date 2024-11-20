@@ -99,15 +99,9 @@ const FriendsPage = () => {
         </div>
 
         {/* Right Section */}
-        <div className="search-area">
-          <div className="search-container">
-            <input
-              type="text"
-              placeholder="Search"
-              className="search-input"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
+        <div className="friend-search-area">
+          <div className="friend-search-container">
+            <input type="text" placeholder="Search" className="friend-search-input" value={searchQuery} onChange={handleSearchChange}/>
           </div>
 
           <div className="results-container">

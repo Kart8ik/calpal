@@ -22,10 +22,10 @@ const YourTasks = () => {
       todayDate,
     });
 
-    const getTodaysTasks = () => {
+    const getTodaysTasks = async () => {
       if (userDetails?.username) {
         console.log("Fetching user data...");
-        getUserData(userDetails.username);
+        await getUserData(userDetails.username);
         if (Array.isArray(userDetails.tasks)) {
           const newTodayTasks = userDetails.tasks.filter(task => task.date === todayDate);
           setTodayTasks(newTodayTasks);
@@ -56,6 +56,7 @@ const YourTasks = () => {
 
     try {
       const data = await apiRequest(`${url}/${userDetails.username}`, options);
+      getUserData(userDetails.username)
       console.log(data);
     } catch (err) {
       console.log("error in posting data");
@@ -73,6 +74,7 @@ const YourTasks = () => {
     };
     try {
       const data = await apiRequest(`${url}/tasks/${userDetails.username}/title/${title}`, options);
+      getUserData(userDetails.username)
       console.log(data);
     } catch (err) {
       console.log("error in deleting data");
@@ -112,8 +114,8 @@ const YourTasks = () => {
               <li key={index} className="your-task-item">
                 <div className="your-task-info">
                   <span className="your-task-firstline">
-                  <span className="your-task-title">{task.title}</span>
-                  <span className="your-task-time">{task.time}</span>
+                    <span className="your-task-title">{task.title}</span>
+                    <span className="your-task-time">{task.time}</span>
                   </span>
                   <span className="your-task-content">{task.content}</span>
                 </div>
@@ -125,11 +127,13 @@ const YourTasks = () => {
           <button onClick={() => setAddTask(prev => !prev)} className="add-task-button">Add Task</button>
           {AddTask && (
             <form onSubmit={addNewTaskinDB} className="add-task-form">
-              <input type="text" name="title" placeholder="Title" value={newTask.title} onChange={updateNewTask} required />
-              <input type="time" name="time" placeholder="Time" value={newTask.time} onChange={updateNewTask} required />
-              <input type="date" name="date" placeholder="Date" value={newTask.date} onChange={updateNewTask} required />
-              <input type="text" name="content" placeholder="Content" value={newTask.content} onChange={updateNewTask} required />
-              <button type="submit">Add</button>
+              <div className='form-add-task'>
+                <input type="text" name="title" placeholder="Title" value={newTask.title} onChange={updateNewTask} required />
+                <input type="time" name="time" placeholder="Time" value={newTask.time} onChange={updateNewTask} required />
+                <input type="date" name="date" placeholder="Date" value={newTask.date} onChange={updateNewTask} required />
+                <input type="text" name="content" placeholder="Content" value={newTask.content} onChange={updateNewTask} required />
+                <button type="submit">Add</button>
+              </div>
             </form>
           )}
         </div>

@@ -1,0 +1,100 @@
+/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background-image: url('./flowers-bg.jpg'); /* Dark background */
+  background-size: cover;
+  color: #f7f7f7; /* Light text color */
+}
+
+/* Front Page Container */
+.front-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Intro Section */
+.intro-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.intro-section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #f7f7f7;
+  margin-bottom: 1rem;
+}
+
+.intro-section p {
+  font-size: 1.2rem;
+  color: #c1c1c1;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+    padding: 0.6rem 1rem;
+    background-color: #212121; /* Dark background */
+    border: 2px solid #d6a6c2;
+    border-radius: 20px;
+    color: #d6a6c2;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-weight: bold;
+    font-size:1rem;
+}
+
+.cta-button:hover {
+    background-color: #d6a6c2;
+    color: white;
+    border: 2px solid #d6a6c2;
+}
+
+/* Feature Section */
+.feature-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 3rem 0;
+}
+
+.feature {
+  max-width: 300px;
+  text-align: center;
+  margin: 1rem;
+  background-color: #212121;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #f7f7f7;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #c1c1c1;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1rem;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1rem;
+  color: #c1c1c1;
+}

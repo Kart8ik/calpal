@@ -103,11 +103,14 @@ body {
     padding: 0.6rem 1rem;
     background-color: #212121; /* Dark background */
     border: 2px solid #d6a6c2;
-    border-radius: 20px;
+    border-radius: 25px;
     color: #d6a6c2;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     font-weight: bold;
+    width: 7rem;
+    align-self: center;
+    font-size: 1rem;
 }
 
 .add-task-button:hover,
@@ -117,6 +120,13 @@ body {
     border: 2px solid #d6a6c2;
 }
 
+.form-add-task{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .add-task-form {
     display: flex;
     flex-wrap: wrap;
@@ -124,6 +134,8 @@ body {
     margin-top: 1rem;
     margin-left: 0.5rem;
     align-self: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-task-form input {

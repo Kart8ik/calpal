@@ -4,13 +4,13 @@ import 'react-calendar/dist/Calendar.css';
 import '../stylesheets/YourCalender.css';
 import NavbarTwo from './NavbarTwo';
 import AllContext from '../context/AllContext';
+import apiRequest from './apiRequest';
 
 const YourCalender = () => {
   const { userDetails } = useContext(AllContext);
   const [selectedTasks, setSelectedTasks] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-
+  const url = "http://localhost:8080/api/users";
 
   useEffect(() => {
     if (!userDetails || !userDetails.tasks) return;
@@ -36,6 +36,22 @@ const YourCalender = () => {
     });
   };
 
+  const deleteTaskinDB = async (title) => {
+    const newSelectedTasks = selectedTasks.filter(task => task.title !== title);
+    setSelectedTasks(newSelectedTasks);
+    const options = {
+      method: 'DELETE'
+    };
+    try {
+      const data = await apiRequest(`${url}/tasks/${userDetails.username}/title/${title}`, options);
+      console.log(data);
+    } catch (err) {
+      console.log("error in deleting data");
+    } finally {
+      console.log('done');
+    }
+  };
+
   return (
     <div className="your-calender-container">
       <NavbarTwo />
@@ -57,7 +73,10 @@ const YourCalender = () => {
                     <span className="calendar-task-title">{task.title}</span>
                     <span className="calendar-task-time">{task.time}</span>
                   </span>
+                  <span className='calendar-tasks-secondline'>
                   <span className="calendar-task-content">{task.content}</span>
+                  <button onClick={() => deleteTaskinDB(task.title)} className="calendar-task-complete-button">Complete</button>
+                  </span>
                 </li>
               ))}
             </ul>
