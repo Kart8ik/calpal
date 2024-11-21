@@ -123,9 +123,11 @@ body {
 .no-results {
     color: #999;
     font-style: italic;
+    text-align: center;
 }
 
 .placeholder {
     color: #999;
     font-style: italic;
+    text-align: center;
 }

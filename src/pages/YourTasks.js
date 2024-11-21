@@ -4,6 +4,7 @@ import '../stylesheets/YourTasks.css';
 import apiRequest from './apiRequest';
 import NavbarTwo from './NavbarTwo';
 import AllContext from '../context/AllContext';
+import flower from '../stylesheets/strelitzia plant-rafiki.png'
 
 const YourTasks = () => {
   const url = "http://localhost:8080/api/users";
@@ -37,7 +38,25 @@ const YourTasks = () => {
     getTodaysTasks();
   }, [userDetails.username, todayDate, userDetails.tasks?.length, getUserData]);
 
-
+  const updateNewTask = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "title":
+        setNewTask((prev) => ({ ...prev, title: value }));
+        break;
+      case "time":
+        setNewTask((prev) => ({ ...prev, time: value }));
+        break;
+      case "date":
+        setNewTask((prev) => ({ ...prev, date: value }));
+        break;
+      case "content":
+        setNewTask((prev) => ({ ...prev, content: value }));
+        break;
+      default:
+        break;
+    }
+  };
 
   const addNewTaskinDB = async (event) => {
     event.preventDefault();
@@ -83,26 +102,6 @@ const YourTasks = () => {
     }
   };
 
-  const updateNewTask = (e) => {
-    const { name, value } = e.target;
-    switch (name) {
-      case "title":
-        setNewTask((prev) => ({ ...prev, title: value }));
-        break;
-      case "time":
-        setNewTask((prev) => ({ ...prev, time: value }));
-        break;
-      case "date":
-        setNewTask((prev) => ({ ...prev, date: value }));
-        break;
-      case "content":
-        setNewTask((prev) => ({ ...prev, content: value }));
-        break;
-      default:
-        break;
-    }
-  };
-
   return (
     <div className="your-tasks-container">
       <NavbarTwo />
@@ -139,7 +138,7 @@ const YourTasks = () => {
         </div>
         <div className="date-section">
           <div className='date-section-heading'>{new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' })}</div>
-          <img src='/flower.png' alt="Flower Illustration" className="flower-illustration" />
+          <img src={flower} alt="Flower Illustration" className="flower-illustration" />
           <div><Link to="/yourcalendar" className="calendar-link">View Calendar</Link></div>
         </div>
       </div>

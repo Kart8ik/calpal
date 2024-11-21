@@ -268,3 +268,7 @@ body {
     max-width: 80%;
     margin-bottom: 1rem;
 }
+
+.add-task-button{
+  margin-top: 1rem;
+}

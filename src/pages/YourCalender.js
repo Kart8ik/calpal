@@ -5,6 +5,8 @@ import '../stylesheets/YourCalender.css';
 import NavbarTwo from './NavbarTwo';
 import AllContext from '../context/AllContext';
 import apiRequest from './apiRequest';
+import flower from '../stylesheets/strelitzia plant-rafiki.png'
+
 
 const YourCalender = () => {
   const { userDetails } = useContext(AllContext);
@@ -84,12 +86,7 @@ const YourCalender = () => {
         </div>
         <div className="sidebar">
           <div className='calendar-tasks-section-heading'>{selectedDate.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' })}</div>
-          <img
-            src="./flower-illustration.png"
-            alt="Flower Illustration"
-            className="flower-illustration"
-          />
-          {/* <button className="your-tasks-button">Your Tasks</button> */}
+          <img src={flower} alt="Flower Illustration" className="flower-illustration"/>
         </div>
       </div>
     </div>

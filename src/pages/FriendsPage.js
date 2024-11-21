@@ -3,6 +3,9 @@ import "../stylesheets/FriendsPage.css";
 import NavbarTwo from "./NavbarTwo";
 import AllContext from "../context/AllContext";
 import apiRequest from "./apiRequest";
+import friendsimg from "../stylesheets/Online tech talks-amico.png"
+import aloneimg from "../stylesheets/Alone-amico.png"
+
 const FriendsPage = () => {
   const { userDetails, users, setUserDetails, getUserData } = useContext(AllContext);
   const [searchQuery, setSearchQuery] = useState("");
@@ -113,10 +116,16 @@ const FriendsPage = () => {
                   </div>
                 ))
               ) : (
+                <div>
+                <img src={aloneimg} alt="Flower Illustration" className="flower-illustration"/>
                 <div className="no-results">No users match your search.</div>
+                </div>
               )
             ) : (
+              <div>
+              <img src={friendsimg} alt="Flower Illustration" className="flower-illustration"/>
               <div className="placeholder">Discover more people who think alike.</div>
+              </div>
             )}
           </div>
         </div>

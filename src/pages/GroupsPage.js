@@ -3,35 +3,39 @@ import { useNavigate } from 'react-router-dom';
 import AllContext from '../context/AllContext';
 import NavbarTwo from './NavbarTwo';
 import '../stylesheets/GroupsPage.css';
+import groupimg from '../stylesheets/Group discussion-amico.png'
+import aloneimg from '../stylesheets/Alone-amico.png'
 import apiRequest from './apiRequest';
 
 const GroupsPage = () => {
-  const { userDetails, getGroups, selectedGroup, setSelectedGroup, getGroup, groups, setGroups } = useContext(AllContext);
+  const { userDetails, getGroups, setSelectedGroup, groups} = useContext(AllContext);
   const [userGroups, setUserGroups] = useState([]);
   const [LocalselectedGroup, setLocalSelectedGroup] = useState(null); // Local state to manage selected group
   const [results, setResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [addGroupflag, setAddGroupflag] = useState(false)
+  const [deleteGroupflag, setDeleteGroupflag] = useState(false)
   const navigate = useNavigate();
   const url = "http://localhost:8080/api/groups";
 
   useEffect(() => {
-    const getUserGroups = () => {
+    const getUserGroups = async () => {
       if (userDetails?.username) {
         console.log("Fetching user data...");
-        getGroups();
-        if (Array.isArray(groups)) {
-          const newUserGroups = groups.filter(group => group.members.includes(userDetails.username));
-          setUserGroups(newUserGroups);
-          console.log("user Groups", newUserGroups);
-        }
+        await getGroups();
       }
     };
+  
     getUserGroups();
-  }, [userDetails]);
+  }, [userDetails, addGroupflag, deleteGroupflag]);
 
-  const handleGroupClick = (group) => {
-    setLocalSelectedGroup(group); // Set selected group locally for this component
-  };
+  useEffect(() => {
+    if (Array.isArray(groups)) {
+      const newUserGroups = groups.filter(group => group.members.includes(userDetails.username));
+      setUserGroups(newUserGroups);
+      console.log("user Groups", newUserGroups);
+    }
+  }, [groups]);
 
   const handleViewCalendarClick = (group) => {
     setSelectedGroup(group);
@@ -39,6 +43,7 @@ const GroupsPage = () => {
     navigate('/groupcalendar'); // Navigate to the GroupCalendar page
 
   };
+
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -51,6 +56,10 @@ const GroupsPage = () => {
     }
   };
 
+  const handleGroupClick = (group) => {
+    setLocalSelectedGroup(group); // Set selected group locally for this component
+  };
+
   const addGroup = async (groupName) => {
     const options = {
       method: 'PUT',
@@ -58,12 +67,12 @@ const GroupsPage = () => {
         'Content-Type': 'application/json'
       }
     }
+    setAddGroupflag(prev=>!prev)
     const newGroup = groups.find(group => group.groupName === groupName)
     if (newGroup.members.includes(userDetails.username)) return;
     const response = await apiRequest(`${url}/${groupName}/userName/${userDetails.username}`, options)
     console.log(response)
     setUserGroups((prevGroups) => [...prevGroups, newGroup]);
-    getGroups();
   };
 
   const deleteGroup = async (groupName) => {
@@ -73,12 +82,14 @@ const GroupsPage = () => {
         'Content-Type': 'application/json'
       }
     }
+    setDeleteGroupflag(prev=>!prev)
     const response = await apiRequest(`${url}/${groupName}/userName/${userDetails.username}`, options)
     console.log(response)
     const newUserGroups = userGroups.filter(group => group.groupName !== groupName)
     setUserGroups(newUserGroups);
     getGroups();
   }
+
 
   return (
     <div>
@@ -92,7 +103,7 @@ const GroupsPage = () => {
               <li key={group.id} className='group-item' onClick={() => handleGroupClick(group)}>
                 {group.groupName}
                 <button className="nav-calendar-button" onClick={(e) => { e.stopPropagation(); e.preventDefault(); handleViewCalendarClick(group); }}>View Calendar</button>
-                <button className="delete-group-button" onClick={() => deleteGroup(group.groupName)}>remove</button>
+                <button className="delete-group-button" onClick={() => {setDeleteGroupflag(prev => !prev);deleteGroup(group.groupName)}}>remove</button>
               </li>
             ))}
           </ul>
@@ -122,19 +133,25 @@ const GroupsPage = () => {
             <input type="text" placeholder="Search groups..." className="group-search-input" value={searchQuery} onChange={(e) => handleSearchChange(e)} />
           </div>
           <div className='results-container'>
-          {searchQuery ? (
-            results.length > 0 ? (
-              results.map((result, index) => (
-                <div key={index} className="result-item" onClick={() => addGroup(result)}>
-                  {result}
+            {searchQuery ? (
+              results.length > 0 ? (
+                results.map((result, index) => (
+                  <div key={index} className="result-item" onClick={() => {setAddGroupflag(prev => !prev);addGroup(result)}}>
+                    {result}
+                  </div>
+                ))
+              ) : (
+                <div>
+                <img src={aloneimg} alt="Flower Illustration" className="flower-illustration"/>
+                <div className="no-results">No users match your search.</div>
                 </div>
-              ))
+              )
             ) : (
-              <div className="no-results">No groups match your search.</div>
-            )
-          ) : (
-            <div className="placeholder">Find Exciting Groups to Collaborate...</div>
-          )}
+              <div>
+              <img src={groupimg} alt="Flower Illustration" className="flower-illustration"/>
+              <div className="placeholder">Discover more people who think alike.</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
